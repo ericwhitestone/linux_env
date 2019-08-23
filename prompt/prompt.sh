@@ -109,14 +109,9 @@ function promptcmd()
         # Second Line
         #=========================================================
         PS1="${PS1}\n${cLINES}\342\224\224\342\224\200\342\224\200> ${cCMD}"
+        export PS1 
+
 }
 
-function load_prompt () {
-    # Get PIDs
 
-    export DAY=$(date +%A)
-    PROMPT_COMMAND=promptcmd
-    export PS1 PROMPT_COMMAND
-}
-
-load_prompt
+promptcmd
