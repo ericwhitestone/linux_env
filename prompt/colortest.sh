@@ -24,7 +24,7 @@ BLACK RED LIGHTRED GREEN LIGHTGREEN BROWN YELLOW BLUE LIGHTBLUE PURPLE PINK CYAN
 
 for color in $COLORLIST 
 do
-    echo $color
+    echo -e ${!color} $color
 done
 
 echo -e "${LIGHTGRAY}this is light gray"
