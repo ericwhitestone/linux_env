@@ -51,6 +51,7 @@ eSSH=1 # Track if session is SSH
 eUSH=1 # Show user and host
 ePWD=1 # Show current directory
 errChr=$(echo -e "\u2508")
+branchDec=$(echo -e "\u2508")
 
 
 
@@ -67,7 +68,7 @@ function updateGitBranch()
         fi
 
         gitBranch=${gitBranch:2};
-        gitBranch="${cLINES}\342\224\202${cDEC}\342\226\240 ${cBRANCH}${gitBranch} ${cDEC}\342\226\240"
+        gitBranch="${cLINES}\342\224\202${cDEC}${branchDec} ${cBRANCH}${gitBranch} ${cDEC}${branchDec}"
     fi
 }
 #\342\226\221 shaded
