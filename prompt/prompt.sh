@@ -1,29 +1,29 @@
 #=========================================================
 #Terminal Color Codes
 #=========================================================
-WHITE='\033[1;37m'
-LIGHTGRAY='\033[0;37m'
-GRAY='\033[1;30m'
-BLACK='\033[0;30m'
-RED='\033[0;31m'
-LIGHTRED='\033[1;31m'
-GREEN='\033[0;32m'
-LIGHTGREEN='\033[1;32m'
-BROWN='\033[0;33m' #Orange
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-LIGHTBLUE='\033[1;34m'
-PURPLE='\033[0;35m'
-PINK='\033[1;35m' #Light Purple
-CYAN='\033[0;36m'
-LIGHTCYAN='\033[1;36m'
-DEFAULT='\033[0m'
+WHITE='\[\033[1;37m\]'
+LIGHTGRAY='\[\033[0;37m\]'
+GRAY='\[\033[1;30m\]'
+BLACK='\[\033[0;30m\]'
+RED='\[\033[0;31m\]'
+LIGHTRED='\[\033[1;31m\]'
+GREEN='\[\033[0;32m\]'
+LIGHTGREEN='\[\033[1;32m\]'
+BROWN='\[\033[0;33m\]' #Orange
+YELLOW='\[\033[1;33m\]'
+BLUE='\[\033[0;34m\]'
+LIGHTBLUE='\[\033[1;34m\]'
+PURPLE='\[\033[0;35m\]'
+PINK='\[\033[1;35m\]' #Light Purple
+CYAN='\[\033[0;36m\]'
+LIGHTCYAN='\[\033[1;36m\]'
+DEFAULT='\[\033[0m\]'
 
 #=========================================================
 # User Configuration
 #=========================================================
 # Colors
-cLINES=$LIGHTGRAY #Lines and Arrow
+cLINES=$LIGHTBLUE #Lines and Arrow
 cBRACKETS=$LIGHTGRAY # Brackets around each data item
 cERROR=$LIGHTRED # Error block when previous command did not return 0
 cTIME=$LIGHTGRAY # The current time
@@ -114,4 +114,4 @@ function promptcmd()
 }
 
 
-promptcmd
+PROMPT_COMMAND=promptcmd
