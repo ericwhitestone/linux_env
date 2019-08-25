@@ -47,7 +47,8 @@ eERR=1 # Previous command return status tracker
 eSSH=1 # Track if session is SSH
 eUSH=1 # Show user and host
 ePWD=1 # Show current directory
-
+#\u250B
+errChr=$(echo -e "\u2508")
 
 function promptcmd()
 {
@@ -75,7 +76,7 @@ function promptcmd()
         # First Dynamic Block - Previous Command Error
         #=========================================================
         if [ $PREVRET -ne 0 ] ; then
-                PS1="${PS1}${cBRACKETS}[${cERROR}:(${cBRACKETS}]${cLINES}\342\224\200"
+                PS1="${PS1}${cBRACKETS}[${cERROR}${errChr}${cBRACKETS}]${cLINES}\342\224\200"
         fi
 
         #=========================================================
