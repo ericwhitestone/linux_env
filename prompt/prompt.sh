@@ -24,7 +24,7 @@ DEFAULT='\[\033[0m\]'
 #=========================================================
 # Colors
 cLINES=$LIGHTBLUE #Lines and Arrow
-cBRACKETS=$LIGHTGRAY # Brackets around each data item
+cBRACKETS=$LIGHTBLUE # Brackets around each data item
 cERROR=$LIGHTRED # Error block when previous command did not return 0
 cTIME=$LIGHTGRAY # The current time
 cMPX1=$YELLOW # Color for terminal multiplexer threshold 1
@@ -34,11 +34,11 @@ cBGJ2=$RED # Color for background job threshold 2
 cSTJ1=$YELLOW # Color for background job threshold 1
 cSTJ2=$RED # Color for  background job threshold 2
 cSSH=$PINK # Color for brackets if session is an SSH session
-cUSR=$LIGHTBLUE # Color of user
-cUHS=$GRAY # Color of the user and hostname separator, probably '@'
-cHST=$LIGHTGREEN # Color of hostname
+cUSR=$CYAN # Color of user
+cUHS=$LIGHTBLUE # Color of the user and hostname separator, probably '@'
+cHST=$CYAN # Color of hostname
 cRWN=$RED # Color of root warning
-cPWD=$BLUE # Color of current directory
+cPWD=$LIGHTGRAY # Color of current directory
 cCMD=$DEFAULT # Color of the command you type
 
 # Enable block
@@ -96,7 +96,7 @@ function promptcmd()
         if [ $EUID -eq 0 ] ; then
                 PS1="${PS1}${sesClr}[${cRWN}!"
         else
-                PS1="${PS1}${sesClr}[${cUSR}\u@${cUHS}${UHS}"
+                PS1="${PS1}${sesClr}[${cUSR}\u${cUHS}@${UHS}"
         fi
         PS1="${PS1}${cHST}\h${sesClr}]${cLINES}\342\224\200"
 
