@@ -60,7 +60,7 @@ function updateGitBranch()
     gitBranch=$(git branch 2>/dev/null | grep '*') || unset gitBranch
     if [ -n "$gitBranch" ]; then 
         status=$(git status)
-        if echo $status | grep 'treen clean'; then
+        if echo $status | grep 'tree clean'; then
             cDEC=${cBRDEC}
         else
             cDEC=${cBRDEC_UNSTAGED}
