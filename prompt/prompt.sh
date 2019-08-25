@@ -40,6 +40,7 @@ cHST=$CYAN # Color of hostname
 cRWN=$RED # Color of root warning
 cPWD=$LIGHTGRAY # Color of current directory
 cCMD=$DEFAULT # Color of the command you type
+cBRANCH=$DEFAULT
 
 # Enable block
 eNL=1  # Have a newline between previous command output and new prompt
@@ -49,9 +50,22 @@ eUSH=1 # Show user and host
 ePWD=1 # Show current directory
 errChr=$(echo -e "\u2508")
 
+
+
+function updateGitBranch()
+{
+    gitBranch=$(git branch 2>/dev/null | grep '*') || unset gitBranch
+    if [ -n "$gitBranch" ]; then 
+        gitBranch=${gitBranch:2};
+        gitBranch="${cLINES}\342\224\202${cBRANCH}${gitBranch}"
+    fi
+}
+
+
 function promptcmd()
 {
         PREVRET=$?
+        updateGitBranch
         #=========================================================
         #check if user is in ssh session
         #=========================================================
@@ -106,8 +120,15 @@ function promptcmd()
         PS1="${PS1}[${cPWD}\w${cBRACKETS}]"
 
         #=========================================================
-        # Second Line
+        # Dynamic Line - Git branch
         #=========================================================
+        if [ -n "$gitBranch" ]; then
+            PS1="${PS1}\n${gitBranch}"
+        fi
+        #=========================================================
+        # Final line / Prompt
+        #=========================================================
+
         PS1="${PS1}\n${cLINES}\342\224\224\342\224\200\342\224\200> ${cCMD}"
         export PS1 
 
