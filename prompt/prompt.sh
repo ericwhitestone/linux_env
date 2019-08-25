@@ -40,7 +40,10 @@ cHST=$CYAN # Color of hostname
 cRWN=$RED # Color of root warning
 cPWD=$LIGHTGRAY # Color of current directory
 cCMD=$DEFAULT # Color of the command you type
-cBRANCH=$DEFAULT
+cBRANCH=$LIGHTGRAY
+cBRDEC=$LIGHTBLUE
+cBRDEC_UNSTAGED=$YELLOW
+cBRDEC_
 
 # Enable block
 eNL=1  # Have a newline between previous command output and new prompt
@@ -57,11 +60,12 @@ function updateGitBranch()
     gitBranch=$(git branch 2>/dev/null | grep '*') || unset gitBranch
     if [ -n "$gitBranch" ]; then 
         gitBranch=${gitBranch:2};
-        gitBranch="${cLINES}\342\224\202${cBRANCH}${gitBranch}"
+        gitBranch="${cLINES}\342\224\202${cBRDEC}\342\226\240 ${cBRANCH}${gitBranch} ${cBRDEC}\342\226\240"
     fi
 }
+#\342\226\221 shaded
 
-
+#\342\226\240 solid
 function promptcmd()
 {
         PREVRET=$?
