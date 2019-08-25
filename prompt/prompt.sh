@@ -43,7 +43,6 @@ cCMD=$DEFAULT # Color of the command you type
 cBRANCH=$LIGHTGRAY
 cBRDEC=$LIGHTBLUE
 cBRDEC_UNSTAGED=$YELLOW
-cBRDEC_
 
 # Enable block
 eNL=1  # Have a newline between previous command output and new prompt
@@ -57,10 +56,18 @@ errChr=$(echo -e "\u2508")
 
 function updateGitBranch()
 {
+     
     gitBranch=$(git branch 2>/dev/null | grep '*') || unset gitBranch
     if [ -n "$gitBranch" ]; then 
+        status=$(git status)
+        if echo $status | grep 'treen clean'; then
+            cDEC=${cBRDEC}
+        else
+            cDEC=${cBRDEC_UNSTAGED}
+        fi
+
         gitBranch=${gitBranch:2};
-        gitBranch="${cLINES}\342\224\202${cBRDEC}\342\226\240 ${cBRANCH}${gitBranch} ${cBRDEC}\342\226\240"
+        gitBranch="${cLINES}\342\224\202${cDEC}\342\226\240 ${cBRANCH}${gitBranch} ${cDEC}\342\226\240"
     fi
 }
 #\342\226\221 shaded
